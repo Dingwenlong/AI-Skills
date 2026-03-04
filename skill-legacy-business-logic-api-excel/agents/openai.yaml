@@ -1,0 +1,4 @@
+interface:
+  display_name: "Legacy Logic To API Excel"
+  short_description: "Trace legacy business logic and produce API Excel details"
+  default_prompt: "Analyze legacy code business logic and generate migration-ready API detail output in Excel format."

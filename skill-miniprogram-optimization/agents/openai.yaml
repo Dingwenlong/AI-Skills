@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mini Program Optimizer"
+  short_description: "Miniprogram responsive UI optimization guide"
+  default_prompt: "Use $skill-miniprogram-optimization to optimize this miniprogram page for responsive layout, scrolling behavior, and interaction issues."

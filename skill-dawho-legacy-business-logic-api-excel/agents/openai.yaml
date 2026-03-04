@@ -1,0 +1,4 @@
+interface:
+  display_name: "DAWHO Legacy Logic To API Excel"
+  short_description: "Trace DAWHO legacy business logic and produce API Excel details"
+  default_prompt: "Analyze DAWHO legacy code business logic and generate migration-ready API detail output in Excel format."

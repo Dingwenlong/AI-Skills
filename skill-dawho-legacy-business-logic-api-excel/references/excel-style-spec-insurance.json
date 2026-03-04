@@ -1,0 +1,228 @@
+{
+  "column_widths": {
+    "A": 23.71,
+    "B": 32.86,
+    "C": 11.57,
+    "D": 5.71,
+    "E": 19.57,
+    "F": 50.43,
+    "G": 86.0
+  },
+  "base": {
+    "horizontal_alignment": -4131,
+    "vertical_alignment": -4160,
+    "wrap_text": true,
+    "font_size": 10,
+    "base_fill_color": 16777215
+  },
+  "borders": {
+    "enabled": true,
+    "line_style": 1,
+    "weight": 2,
+    "color": 0
+  },
+  "merge_rules": [
+    {
+      "title": "For中台開發人員",
+      "mode": "current_row",
+      "ranges": [
+        "A:F"
+      ]
+    },
+    {
+      "title": "情境說明",
+      "mode": "block_until_blank",
+      "start_offset": 0,
+      "stop_when_colA_blank": true,
+      "ranges": [
+        "B:C",
+        "D:F"
+      ]
+    },
+    {
+      "title": "API 內部業務邏輯",
+      "mode": "block_until_blank",
+      "start_offset": 1,
+      "stop_when_colA_blank": true,
+      "ranges": [
+        "B:F"
+      ]
+    }
+  ],
+  "title_rules": [
+    {
+      "title": "API  Name",
+      "range": "A:G",
+      "fill_color": 15652797,
+      "bold": true
+    },
+    {
+      "title": "Request",
+      "range": "A:A",
+      "fill_color": 15652797,
+      "bold": true
+    },
+    {
+      "title": "Response",
+      "range": "A:A",
+      "fill_color": 15652797,
+      "bold": true
+    },
+    {
+      "title": "範例",
+      "range": "A:A",
+      "fill_color": 15652797,
+      "bold": true
+    },
+    {
+      "title": "For中台開發人員",
+      "range": "A:F",
+      "fill_color": 65535
+    },
+    {
+      "title": "API 內部業務邏輯",
+      "range": "A:A",
+      "fill_color": 15652797,
+      "bold": true
+    },
+    {
+      "title": "#",
+      "range": "A:G",
+      "fill_color": 11854022,
+      "bold": true
+    },
+    {
+      "title": "情境說明",
+      "range": "A:G",
+      "fill_color": 11854022,
+      "bold": true
+    }
+  ],
+  "alignment_rules": [
+    {
+      "title": "API  Name",
+      "mode": "current_row",
+      "range": "A:G",
+      "horizontal_alignment": -4108,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "Request",
+      "mode": "current_row",
+      "range": "A:A",
+      "horizontal_alignment": -4108,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "Response",
+      "mode": "current_row",
+      "range": "A:A",
+      "horizontal_alignment": -4108,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "範例",
+      "mode": "current_row",
+      "range": "A:A",
+      "horizontal_alignment": -4108,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "#",
+      "mode": "current_row",
+      "range": "A:G",
+      "horizontal_alignment": -4108,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "情境說明",
+      "mode": "current_row",
+      "range": "A:G",
+      "horizontal_alignment": -4108,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "For中台開發人員",
+      "mode": "current_row",
+      "range": "A:F",
+      "horizontal_alignment": -4108,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "API 內部業務邏輯",
+      "mode": "current_row",
+      "range": "A:A",
+      "horizontal_alignment": -4108,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "Request",
+      "mode": "block_until_blank",
+      "start_offset": 2,
+      "stop_when_colA_blank": true,
+      "range": "A:A",
+      "horizontal_alignment": -4108,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "Request",
+      "mode": "block_until_blank",
+      "start_offset": 2,
+      "stop_when_colA_blank": true,
+      "range": "B:G",
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "Response",
+      "mode": "block_until_blank",
+      "start_offset": 2,
+      "stop_when_colA_blank": true,
+      "range": "A:A",
+      "horizontal_alignment": -4108,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "Response",
+      "mode": "block_until_blank",
+      "start_offset": 2,
+      "stop_when_colA_blank": true,
+      "range": "B:G",
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "情境說明",
+      "mode": "block_until_blank",
+      "start_offset": 1,
+      "stop_when_colA_blank": true,
+      "range": "A:A",
+      "horizontal_alignment": 1,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "情境說明",
+      "mode": "block_until_blank",
+      "start_offset": 1,
+      "stop_when_colA_blank": true,
+      "range": "B:F",
+      "horizontal_alignment": -4131,
+      "vertical_alignment": -4108
+    },
+    {
+      "title": "API 內部業務邏輯",
+      "mode": "block_until_blank",
+      "start_offset": 2,
+      "stop_when_colA_blank": true,
+      "range": "A:G",
+      "horizontal_alignment": -4131,
+      "vertical_alignment": -4108
+    }
+  ],
+  "context_rules": {
+    "api_name_title": "API  Name",
+    "api_name_next_row_description_fill": 15921906,
+    "api_logic_section_title": "API 內部業務邏輯",
+    "api_logic_left_title": "涉及BackendAPI",
+    "api_logic_left_regex": "^\\d+:",
+    "api_logic_left_fill_color": 11854022
+  }
+}
