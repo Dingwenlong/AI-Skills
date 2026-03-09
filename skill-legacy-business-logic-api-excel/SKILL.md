@@ -1,5 +1,6 @@
+---
 name: skill-legacy-business-logic-api-excel
-description: Analyze legacy code business logic and produce migration-ready API detail output in Excel format. Use when Codex needs to reverse-engineer old systems, trace business workflows, map module dependencies, extract business rules, and generate ../../skill-outputs/<api>_API_XX_YYYYMMDD.xlsx.
+description: Analyze legacy code business logic and produce migration-ready API detail output in Excel format. Use when Codex needs to reverse-engineer old systems, trace business workflows, map module dependencies, extract business rules, and write Excel deliverables under ../../skill-outputs/ for API detail sheets.
 ---
 
 # Analyze Legacy Logic To API Excel
@@ -97,6 +98,7 @@ description: Analyze legacy code business logic and produce migration-ready API 
   - `"<欄位名稱>": <範例值>`
   - string 值需加雙引號；number/boolean 值不加雙引號。
   - 例如：`"debitAcctValue":"18900100286661"`、`"availBalance":12345.89`
+- Request/Response 欄位名稱統一使用 `camelCase`（lower camel case）。
 - Request/Response 的 `資料型態` 必須依 `範例` 值與業務語意推斷，不可預設全部寫 `string`。
   - `true/false` -> `boolean`
   - 不含小數點的數值 -> `int`

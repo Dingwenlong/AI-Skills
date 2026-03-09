@@ -48,7 +48,9 @@ function Get-ApiBaseName {
 }
 
 function Get-DefaultOutputDir {
-    $dir = Join-Path $PSScriptRoot "..\..\..\skill-outputs"
+    $skillRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
+    $codexHome = [System.IO.Path]::GetFullPath((Join-Path $skillRoot "..\.."))
+    $dir = Join-Path $codexHome "skill-outputs"
     return [System.IO.Path]::GetFullPath($dir)
 }
 
@@ -728,6 +730,11 @@ try {
 
             if ($inApiLogicSection -and $c -eq 2) {
                 $val = Normalize-LogicCell -Text $val
+            }
+            else {
+                # Expand literal "\n" markers for all non-logic cells,
+                # especially JSON examples and explanatory text blocks.
+                $val = Expand-LiteralEscapedLineBreaks -Text $val
             }
 
             $val = Convert-JsonIfNeeded -Text $val
