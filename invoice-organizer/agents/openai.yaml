@@ -1,0 +1,7 @@
+interface:
+  display_name: "发票整理"
+  short_description: "整理电子发票PDF文件，统一命名并按目标金额凑票汇集"
+  default_prompt: "Use $invoice-organizer to 整理当前文件夹发票名称，或按金额 271.45 汇集发票并移动到金额文件夹。"
+
+policy:
+  allow_implicit_invocation: true

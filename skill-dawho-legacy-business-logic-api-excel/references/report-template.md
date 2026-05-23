@@ -5,11 +5,12 @@
 - The intermediate output must be TSV-style rows (7 columns: A~G, separated by TAB).
 - Do not use Markdown tables/fenced code blocks in the final deliverable file.
 - Final deliverable must be `.xlsx` (not `.md`).
-- Treat `../../skill-outputs` as a relative path from the skill folder, equivalent to `<CODEX_HOME>/skill-outputs`.
+- Treat `output/skill-dawho-legacy-business-logic-api-excel` as a repo-local path from the current working directory.
 - Prefer relative output paths; do not depend on user-specific absolute paths.
 - Resolve `responseCode/responseMessage` from:
   - `references/raw/Api_Response_Codes*.xlsx` (自動取檔名日期最新版本，例如 `20260213`)
 - Use module sheet first (e.g. `E_Exchange`), then fallback `O_Common`.
+- Use `references/raw/Regression_Example.xlsx` as the structural regression baseline before final delivery.
 
 ## Excel Rendering Rules
 - In-cell line break must use Excel `Alt+Enter` style (LF / `CHAR(10)`).
@@ -51,15 +52,20 @@
 - Run conversion directly (auto filename by API path, style spec auto-loaded):
   - `powershell -ExecutionPolicy Bypass -File scripts/tsv_to_api_excel.ps1 -InputTsv <TSV_PATH> -ApiPath <ASHX_PATH>`
 - Auto filename rule:
-  - `../../skill-outputs/<ashx檔名>_API_<序號2位>_<yyyyMMdd>.xlsx`
+  - `output/skill-dawho-legacy-business-logic-api-excel/<ashx檔名>_API_<序號2位>_<yyyyMMdd>.xlsx`
   - Example: `ws_querytd_API_01_20260304.xlsx`
 - Input TSV temp rule (auto when `-ApiPath` is provided):
   - Converter copies `-InputTsv` to `<ashx檔名>_API_<序號2位>_<yyyyMMdd>_Temp.tsv`
   - `_Temp.tsv` is deleted automatically after conversion.
 - If fixed output path is needed:
-  - `powershell -ExecutionPolicy Bypass -File scripts/tsv_to_api_excel.ps1 -InputTsv <TSV_PATH> -OutputXlsx ../../skill-outputs/<OUTPUT_XLSX_PATH>`
+  - `powershell -ExecutionPolicy Bypass -File scripts/tsv_to_api_excel.ps1 -InputTsv <TSV_PATH> -OutputXlsx output/skill-dawho-legacy-business-logic-api-excel/<OUTPUT_XLSX_PATH>`
 - Optional custom style spec:
   - `powershell -ExecutionPolicy Bypass -File scripts/tsv_to_api_excel.ps1 -InputTsv <TSV_PATH> -ApiPath <ASHX_PATH> -StyleSpecPath <STYLE_SPEC_JSON_PATH>`
+- Converter auto-runs regression check by default:
+  - `powershell -ExecutionPolicy Bypass -File scripts/tsv_to_api_excel.ps1 -InputTsv <TSV_PATH> -ApiPath <ASHX_PATH>`
+- Manual fallback regression check:
+  - `python scripts/check_regression_example.py --xlsx <OUTPUT_XLSX_PATH>`
+- Use `-SkipRegressionCheck` only for temporary debugging.
 
 ## Reference Sheet Style
 - Spec file: `excel-style-spec-insurance.json`
@@ -97,7 +103,7 @@
 `2<TAB><REQUEST_FIELD_2><TAB><TYPE><TAB>Y/N<TAB><DESC><TAB>"<REQUEST_FIELD_2>":<NUMBER_OR_BOOLEAN><TAB>Formula: <EXPR or N/A>`
 `<TAB><TAB><TAB><TAB><TAB><TAB>`
 `Response<TAB><TAB><TAB><TAB><TAB><TAB>`
-`#<TAB>欄位名稱<TAB>資料型態<TAB>必填<TAB>欄位說明<TAB>範例(格式: "欄位名稱":值)<TAB>備註(可寫參數來源/處理邏輯/公式)`
+`#<TAB>欄位名稱<TAB>資料型態<TAB>必填<TAB>欄位說明<TAB>範例(格式: "欄位名稱":值)<TAB>備註(可寫處理邏輯/公式，不需Source)`
 `1<TAB>isSuccess<TAB>boolean<TAB>Y<TAB>API成功與否<TAB>"isSuccess":true<TAB>true ; false`
 `2<TAB>responseCode<TAB>string<TAB>Y<TAB>回應代碼<TAB>"responseCode":"0000"<TAB>成功:0000其餘狀況為失敗`
 `3<TAB>responseMessage<TAB>string<TAB>Y<TAB>回應訊息<TAB>"responseMessage":"成功！"<TAB>失敗狀況下回傳錯誤訊息`
@@ -110,7 +116,7 @@
 `範例<TAB><TAB><TAB><TAB><TAB><TAB>`
 `情境說明<TAB>Request<TAB><TAB>Response<TAB><TAB><TAB>`
 `正向情境<TAB><POSITIVE_REQUEST_JSON><TAB><TAB><POSITIVE_RESPONSE_JSON><TAB><TAB><TAB>`
-`連接數據庫失敗<TAB><TAB><TAB><DB_FAIL_RESPONSE_JSON><TAB><TAB><TAB>`
+`連接數據庫或下游服務失敗<TAB><TAB><TAB><DB_FAIL_RESPONSE_JSON><TAB><TAB><TAB>`
 `查詢成功後,返回的數據為null<TAB><TAB><TAB><NULL_RESPONSE_JSON><TAB><TAB><TAB>`
 `未輸入必填請求參數<TAB><TAB><TAB><PARAM_FAIL_RESPONSE_JSON><TAB><TAB><TAB>`
 `<TAB><TAB><TAB><TAB><TAB><TAB>`
@@ -127,7 +133,7 @@
 ## Quality Checklist
 - Keep exactly 7 columns per row (A~G).
 - Keep naming and wording consistent with legacy terms.
-- Keep key logic source trace in `API 內部業務邏輯` notes (e.g. `path:line`).
+- Align section order, header rows, scenario labels, and merge layout with `Regression_Example.xlsx`.
 - Mark inferred content clearly (e.g. `Inference`).
 - Request/Response `範例` 欄位必須是 `"<欄位名稱>":值` 格式。
 - Request/Response `資料型態` 必須依範例值推斷，不可全部寫 `string`。
@@ -136,3 +142,5 @@
 - Response JSON must use response codes/messages found from response code workbook.
 - In-cell multi-line text must use Excel line break (Alt+Enter / LF).
 - Request/Response 備註不需寫 Source；若是計算值可補公式。
+- Do not output `Source` / `path:line` in `API 內部業務邏輯`.
+- Run `python scripts/check_regression_example.py --xlsx <OUTPUT_XLSX_PATH>` before delivery.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Beautiful Brochure PDF"
+  short_description: "Design polished brochure and catalog PDFs"
+  default_prompt: "Use $beautiful-brochure-pdf to create a polished brochure PDF from my brief, copy, and assets."

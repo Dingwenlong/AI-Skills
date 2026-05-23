@@ -1,0 +1,4 @@
+interface:
+  display_name: "LibTV Cultural Playbook"
+  short_description: "Benchmark-driven LibTV cultural short planning."
+  default_prompt: "Use $libtv-cultural-tvshow-playbook to benchmark related LibTV TV Show references and turn them into a tighter cultural short production plan before running LibTV generation."

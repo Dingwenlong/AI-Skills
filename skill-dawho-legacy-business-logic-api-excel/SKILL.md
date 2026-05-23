@@ -1,16 +1,16 @@
 ---
 name: skill-dawho-legacy-business-logic-api-excel
-description: Analyze DAWHO legacy code business logic and produce migration-ready API detail output in Excel format. Use when Codex needs to reverse-engineer DAWHO old systems, trace business workflows, map module dependencies, extract business rules, and write Excel deliverables to the skill-relative output folder ../../skill-outputs for direct use in API detail sheets.
+description: Analyze DAWHO legacy code business logic and produce migration-ready API detail output in Excel format. Use when Codex needs to reverse-engineer DAWHO old systems, trace business workflows, map module dependencies, extract business rules, and write Excel deliverables to the current repo output folder `output/skill-dawho-legacy-business-logic-api-excel` for direct use in API detail sheets.
 ---
 
 # Analyze DAWHO Legacy Logic To API Excel
 
 ## Path Rule
 
-- Treat `../../skill-outputs` as a relative path from this skill folder.
-- Resolve it to `<CODEX_HOME>/skill-outputs`.
-- Do not hardcode machine-specific absolute paths such as `C:\Users\...\.codex\skill-outputs`.
-- When passing `-OutputXlsx`, prefer a relative path under `../../skill-outputs` unless the user explicitly requires another location.
+- Treat `output/skill-dawho-legacy-business-logic-api-excel` as a repo-local path relative to the current working directory.
+- Resolve it to `<current-repo>/output/skill-dawho-legacy-business-logic-api-excel`.
+- Do not hardcode machine-specific absolute paths.
+- When passing `-OutputXlsx`, prefer a relative path under `output/skill-dawho-legacy-business-logic-api-excel` unless the user explicitly requires another location.
 
 ## Workflow
 
@@ -86,7 +86,7 @@ description: Analyze DAWHO legacy code business logic and produce migration-read
   - In step text, use: `{Module}.{API Name}({API Description})`
 
 8. Produce analysis intermediate file (TSV)
-- Write source TSV output to `../../skill-outputs/{apiName}_API_{seq:00}_{yyyyMMdd}_temp.tsv` relative to the skill folder (`<CODEX_HOME>/skill-outputs/...`).
+- Write source TSV output to `output/skill-dawho-legacy-business-logic-api-excel/{apiName}_API_{seq:00}_{yyyyMMdd}_temp.tsv` relative to the current repo/workspace.
 - Use the section template in `references/report-template.md`.
 - Keep each rule traceable to source locations.
 - Keep one physical line per TSV row; do not insert raw multiline cell text directly in TSV.
@@ -95,12 +95,12 @@ description: Analyze DAWHO legacy code business logic and produce migration-read
 
 9. Convert TSV to final Excel deliverable (required)
 - Run:
-  - `powershell -ExecutionPolicy Bypass -File scripts/tsv_to_api_excel.ps1 -InputTsv ../../skill-outputs/{apiName}_API_{seq:00}_{yyyyMMdd}_temp.tsv -ApiPath ws/bank/timedeposit/ws_querytd.ashx`
+  - `powershell -ExecutionPolicy Bypass -File scripts/tsv_to_api_excel.ps1 -InputTsv output/skill-dawho-legacy-business-logic-api-excel/{apiName}_API_{seq:00}_{yyyyMMdd}_temp.tsv -ApiPath ws/bank/timedeposit/ws_querytd.ashx`
 - Auto filename rule (when `-OutputXlsx` not provided):
-  - Write to `../../skill-outputs/<ashx檔名>_API_<序號2位>_<yyyyMMdd>.xlsx`
+  - Write to `output/skill-dawho-legacy-business-logic-api-excel/<ashx檔名>_API_<序號2位>_<yyyyMMdd>.xlsx`
   - Example: `ws_querytd_API_01_20260304.xlsx`
   - Same day repeated runs auto-increment sequence (`01`, `02`, `03`...) to avoid overwrite.
-- If fixed filename is required, pass `-OutputXlsx <relative-path-under-../../skill-outputs or explicit target path>`.
+- If fixed filename is required, pass `-OutputXlsx <relative-path-under-output/skill-dawho-legacy-business-logic-api-excel or explicit target path>`.
 - Final delivery file must be `.xlsx`.
 - Do not deliver `.md` as final output.
 - Converter script reads portable style spec from:
@@ -108,8 +108,26 @@ description: Analyze DAWHO legacy code business logic and produce migration-read
 - Style is applied by title/section rules, not fixed row numbers.
 - Merge cells are applied by title/section merge rules in style spec.
 - Alignment is applied by title/section alignment rules in style spec.
+- Converter auto-runs regression validation after `.xlsx` is written unless `-SkipRegressionCheck` is explicitly used for debugging.
 - Optional override:
   - `-StyleSpecPath <custom-style-spec-json>`
+
+10. Validate final workbook against regression sample (required before delivery)
+- Read regression sample workbook before final handoff.
+- Workbook source:
+  - `references/raw/Regression_Example.xlsx`
+- Use it as the structural baseline for:
+  - sheet name `API_Detail`
+  - `A:G` column width profile
+  - fixed section order and fixed header rows
+  - scenario row labels and scenario merge layout
+  - `For中台開發人員` merge layout
+  - `API 內部業務邏輯` merge layout
+- Prefer using:
+  - `scripts/check_regression_example.py`
+  - Example: `python scripts/check_regression_example.py --xlsx output/skill-dawho-legacy-business-logic-api-excel/ws_querytd_API_01_20260304.xlsx`
+- If using `scripts/tsv_to_api_excel.ps1`, prefer the default auto-check and only use `-SkipRegressionCheck` for temporary debugging.
+- If the generated workbook intentionally differs from the regression sample, document the reason in the delivery notes.
 
 ## Output Format (Excel Direct Paste)
 
@@ -158,6 +176,11 @@ description: Analyze DAWHO legacy code business logic and produce migration-read
 - In `範例` block:
   - Positive scenario: include Request JSON + Response JSON.
   - Other scenarios: leave Request column empty; only provide Response JSON.
+- Standard scenario row labels must align with the regression sample:
+  - `正向情境`
+  - `連接數據庫或下游服務失敗`
+  - `查詢成功後,返回的數據為null`
+  - `未輸入必填請求參數`
 - JSON in `範例` must be pretty-printed (multi-line, indented) for direct Excel readability.
 - In-cell line breaks must be Excel `Alt+Enter` style (`LF` / `CHAR(10)`), not extra rows.
 - Cell content that exceeds column width must wrap automatically.
@@ -195,3 +218,4 @@ description: Analyze DAWHO legacy code business logic and produce migration-read
 - Keep `responseCode/responseMessage` aligned with latest `Api_Response_Codes*.xlsx`; if unmatched, mark as `Inference`.
 - For T24Query endpoint mapping, if no `KEY` is found in `TW T24 IRIS_OpenAPI_Summary_20230714.xlsx`, mark as `Inference` and keep both derived token + original endpoint in notes.
 - For common util mapping, if no matching row is found in `NEWDA_API_DETAIL_CommonUtil_20260209.xlsx` (`Api List`), mark as `Inference` and keep original common method signature in notes.
+- Run regression validation against `references/raw/Regression_Example.xlsx` before delivery; if it fails, either fix the workbook or explicitly state the intentional delta.

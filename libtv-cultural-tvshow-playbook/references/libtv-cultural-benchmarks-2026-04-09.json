@@ -1,0 +1,586 @@
+[
+  {
+    "templateUuid": "178b536a7354417aa52ce7d4db589038",
+    "title": "为什么中国神话鲜少有女性英雄？——巨妮JUNIE",
+    "likeCount": 84,
+    "tags": [
+      "概念设计",
+      "精选画布"
+    ],
+    "publishAt": "2026年03月22日 23:01",
+    "description": "我创作了 AI 短片《AURAE 🪭》，去追问中国神话叙事中女性英雄的缺席。\n\n作为一名中国女性，我从小听到的多是孙悟空、哪吒、杨戬这些男性英雄的故事，他们早已深深嵌入我们的集体记忆。但与此同时，母亲也曾讲述花木兰、穆桂英、刘三姐的故事——同样勇敢，却更少被看见。慢慢地我意识到，在广泛流传的神话体系中，女性英雄极为稀少，甚至近乎缺席。\n\n于是我把这个问题带到屏幕上：去想象一个并不完美的女性神话角色。她会脆弱、受伤、迷失，但不会被这些定义。她可以坠入黑暗，也可以选择重新站起来。\n\n因为我们不是被写定的角色——我们可以选择成为谁。\n\n这部短片由我与 LibLib 旗下的 LibTV 合作完成。LibTV 是一个面向专业创作者的 AI 视频平台，其“无限画布”界面可以实时呈现创作过程，支持快速迭代与调整，使创作从碎片化的文件管理回归到更接近思考本身的方式。",
+    "totalNodes": 885,
+    "totalEdges": 1055,
+    "typeCounts": {
+      "group": 1,
+      "image": 783,
+      "text": 98,
+      "video": 3
+    },
+    "actionCounts": {
+      "none": 1,
+      "image_generate": 713,
+      "text_generate": 98,
+      "image_resource": 68,
+      "video_generate": 3,
+      "image_edit": 2
+    },
+    "storyboardGroups": 0,
+    "scriptRows": 0,
+    "imageModels": [
+      "mj-niji7",
+      "mj-v7",
+      "nebula-2-flash",
+      "nebula-ultra",
+      "topaz-image-upscaler"
+    ],
+    "imageModeTypes": [
+      "image2image",
+      "text2image"
+    ],
+    "refImageLinks": 996,
+    "clipCount": 3,
+    "avgClipDurationSec": 8.04,
+    "finalDurationSec": null,
+    "topEdgePairs": [
+      [
+        "image->image",
+        877
+      ],
+      [
+        "image->text",
+        134
+      ],
+      [
+        "?->image",
+        13
+      ],
+      [
+        "text->image",
+        12
+      ],
+      [
+        "image->?",
+        9
+      ],
+      [
+        "text->text",
+        3
+      ]
+    ]
+  },
+  {
+    "templateUuid": "0fcddbcc2d2f4f5facd821d83c1de9e1",
+    "title": "东方奇谭｜天阙之战",
+    "likeCount": 46,
+    "tags": [
+      "AI影像狂飙季",
+      "短片单元",
+      "动画短片",
+      "精选画布"
+    ],
+    "publishAt": "2026年04月05日 00:09",
+    "description": "朱砂泼墨，玄影裂空。⚫️🔴是繁华色相的挣扎，还是寂灭虚无的归途？看尽这场波澜壮阔的东方美学......",
+    "totalNodes": 53,
+    "totalEdges": 45,
+    "typeCounts": {
+      "group": 4,
+      "video": 12,
+      "image": 33,
+      "script": 2,
+      "audio": 1,
+      "text": 1
+    },
+    "actionCounts": {
+      "none": 4,
+      "video_resource": 8,
+      "image_generate": 29,
+      "script_generate": 2,
+      "image_resource": 4,
+      "audio_resource": 1,
+      "video_generate": 4,
+      "text_generate": 1
+    },
+    "storyboardGroups": 2,
+    "scriptRows": 18,
+    "imageModels": [
+      "nebula-ultra"
+    ],
+    "imageModeTypes": [
+      "image2image",
+      "text2image"
+    ],
+    "refImageLinks": 37,
+    "clipCount": 11,
+    "avgClipDurationSec": 13.25,
+    "finalDurationSec": 47.37,
+    "topEdgePairs": [
+      [
+        "image->image",
+        15
+      ],
+      [
+        "image->video",
+        14
+      ],
+      [
+        "image->script",
+        8
+      ],
+      [
+        "group->video",
+        4
+      ],
+      [
+        "script->group",
+        2
+      ],
+      [
+        "text->image",
+        1
+      ]
+    ]
+  },
+  {
+    "templateUuid": "8244d6f1b7e147eca05accb7e0c347c6",
+    "title": "水浒传·风雪山神庙",
+    "likeCount": 44,
+    "tags": [
+      "AI影像狂飙季",
+      "短片单元",
+      "短片剧集",
+      "精选画布"
+    ],
+    "publishAt": "2026年03月31日 22:57",
+    "description": "新手对于ai视频的探索，改编自《水浒传》风雪山神庙篇章。（画布比较乱没有整理过，哈哈）",
+    "totalNodes": 226,
+    "totalEdges": 161,
+    "typeCounts": {
+      "group": 6,
+      "image": 166,
+      "video": 53,
+      "video-story": 1
+    },
+    "actionCounts": {
+      "none": 6,
+      "image_generate": 135,
+      "image_resource": 31,
+      "video_generate": 53,
+      "video_story_resource": 1
+    },
+    "storyboardGroups": 0,
+    "scriptRows": 0,
+    "imageModels": [
+      "nebula-ultra",
+      "topaz-image-upscaler"
+    ],
+    "imageModeTypes": [
+      "image2image",
+      "text2image"
+    ],
+    "refImageLinks": 98,
+    "clipCount": 52,
+    "avgClipDurationSec": 7.16,
+    "finalDurationSec": null,
+    "topEdgePairs": [
+      [
+        "image->image",
+        109
+      ],
+      [
+        "image->video",
+        51
+      ],
+      [
+        "video->video-story",
+        1
+      ]
+    ]
+  },
+  {
+    "templateUuid": "946ee75b69de47cc9bc37dfd1cffae62",
+    "title": "中式深空禅意美学AI短片《太虚游记》（Travels to Taixu）",
+    "likeCount": 31,
+    "tags": [
+      "概念设计",
+      "精选画布"
+    ],
+    "publishAt": "2026年03月25日 23:58",
+    "description": "中式深空禅意美学AI短片《太虚游记》（Travels to Taixu）",
+    "totalNodes": 101,
+    "totalEdges": 81,
+    "typeCounts": {
+      "group": 3,
+      "image": 72,
+      "text": 9,
+      "audio": 3,
+      "video": 14
+    },
+    "actionCounts": {
+      "none": 3,
+      "image_generate": 71,
+      "text_resource": 9,
+      "audio_generate": 3,
+      "image_edit": 1,
+      "video_generate": 14
+    },
+    "storyboardGroups": 0,
+    "scriptRows": 0,
+    "imageModels": [
+      "mj-v7",
+      "nebula-2-flash",
+      "nebula-ultra"
+    ],
+    "imageModeTypes": [
+      "image2image",
+      "text2image"
+    ],
+    "refImageLinks": 50,
+    "clipCount": 14,
+    "avgClipDurationSec": 5.04,
+    "finalDurationSec": null,
+    "topEdgePairs": [
+      [
+        "image->image",
+        51
+      ],
+      [
+        "text->image",
+        16
+      ],
+      [
+        "image->video",
+        14
+      ]
+    ]
+  },
+  {
+    "templateUuid": "bdf2765f208e489689d1c797925b8cf1",
+    "title": "敦煌短片",
+    "likeCount": 10,
+    "tags": [
+      "其他"
+    ],
+    "publishAt": "2026年03月19日 22:54",
+    "description": "",
+    "totalNodes": 50,
+    "totalEdges": 10,
+    "typeCounts": {
+      "group": 6,
+      "image": 24,
+      "script": 2,
+      "video": 18
+    },
+    "actionCounts": {
+      "none": 6,
+      "image_generate": 22,
+      "image_resource": 2,
+      "script_generate": 2,
+      "video_generate": 18
+    },
+    "storyboardGroups": 6,
+    "scriptRows": 12,
+    "imageModels": [
+      "nebula-2-flash",
+      "nebula-ultra"
+    ],
+    "imageModeTypes": [
+      "image2image",
+      "text2image"
+    ],
+    "refImageLinks": 20,
+    "clipCount": 18,
+    "avgClipDurationSec": 4.02,
+    "finalDurationSec": null,
+    "topEdgePairs": [
+      [
+        "image->image",
+        4
+      ],
+      [
+        "group->group",
+        3
+      ],
+      [
+        "script->group",
+        2
+      ],
+      [
+        "image->script",
+        1
+      ]
+    ]
+  },
+  {
+    "templateUuid": "8ac702a824d74780ba0c51d3509ce44a",
+    "title": "StarVideo2.0东方美学CG幻想游戏短片",
+    "likeCount": 10,
+    "tags": [
+      "AI影像狂飙季",
+      "创意单元",
+      "概念设计",
+      "精选画布",
+      "StarVideo2.0"
+    ],
+    "publishAt": "2026年03月31日 23:11",
+    "description": "沧澜有灵，水镜映神",
+    "totalNodes": 49,
+    "totalEdges": 74,
+    "typeCounts": {
+      "video": 13,
+      "image": 36
+    },
+    "actionCounts": {
+      "video_generate": 13,
+      "image_generate": 36
+    },
+    "storyboardGroups": 0,
+    "scriptRows": 0,
+    "imageModels": [
+      "mj-v7",
+      "nebula-2-flash",
+      "nebula-ultra",
+      "seedream-5"
+    ],
+    "imageModeTypes": [
+      "image2image",
+      "text2image"
+    ],
+    "refImageLinks": 48,
+    "clipCount": 13,
+    "avgClipDurationSec": 4.22,
+    "finalDurationSec": null,
+    "topEdgePairs": [
+      [
+        "image->image",
+        48
+      ],
+      [
+        "image->video",
+        26
+      ]
+    ]
+  },
+  {
+    "templateUuid": "74cb49cee61948eeabe6e2e4b069dd79",
+    "title": "中式美学敦煌飞天舞蹈裸眼3D",
+    "likeCount": 5,
+    "tags": [
+      "创意TVC",
+      "AI影像狂飙季",
+      "广告单元"
+    ],
+    "publishAt": "2026年04月09日 09:23",
+    "description": "",
+    "totalNodes": 49,
+    "totalEdges": 61,
+    "typeCounts": {
+      "group": 1,
+      "image": 36,
+      "video": 8,
+      "audio": 1,
+      "text": 3
+    },
+    "actionCounts": {
+      "none": 1,
+      "image_generate": 35,
+      "video_generate": 7,
+      "audio_generate": 1,
+      "image_resource": 1,
+      "text_generate": 2,
+      "text_resource": 1,
+      "video_resource": 1
+    },
+    "storyboardGroups": 0,
+    "scriptRows": 0,
+    "imageModels": [
+      "nebula-2-flash",
+      "nebula-ultra"
+    ],
+    "imageModeTypes": [
+      "image2image",
+      "text2image"
+    ],
+    "refImageLinks": 41,
+    "clipCount": 8,
+    "avgClipDurationSec": 11.55,
+    "finalDurationSec": null,
+    "topEdgePairs": [
+      [
+        "image->image",
+        41
+      ],
+      [
+        "image->video",
+        18
+      ],
+      [
+        "text->text",
+        1
+      ],
+      [
+        "image->?",
+        1
+      ]
+    ]
+  },
+  {
+    "templateUuid": "7cdbb7b8fa374300a13a27dc1ada3daa",
+    "title": "黄沙漫过丝路，文创敦煌短片",
+    "likeCount": 5,
+    "tags": [
+      "AI影像狂飙季",
+      "短片单元",
+      "文旅政媒"
+    ],
+    "publishAt": "2026年04月03日 18:45",
+    "description": "",
+    "totalNodes": 52,
+    "totalEdges": 54,
+    "typeCounts": {
+      "image": 37,
+      "video": 15
+    },
+    "actionCounts": {
+      "image_generate": 37,
+      "video_generate": 15
+    },
+    "storyboardGroups": 0,
+    "scriptRows": 0,
+    "imageModels": [
+      "mj-v7",
+      "nebula-ultra",
+      "seedream-5"
+    ],
+    "imageModeTypes": [
+      "image2image",
+      "text2image"
+    ],
+    "refImageLinks": 27,
+    "clipCount": 14,
+    "avgClipDurationSec": 6.4,
+    "finalDurationSec": null,
+    "topEdgePairs": [
+      [
+        "image->image",
+        27
+      ],
+      [
+        "image->video",
+        25
+      ],
+      [
+        "?->?",
+        2
+      ]
+    ]
+  },
+  {
+    "templateUuid": "03f87640a5cd4bb1a51c2bafda693fe8",
+    "title": "东方美学3D西湖踏青短片",
+    "likeCount": 2,
+    "tags": [
+      "AI影像狂飙季",
+      "短片单元",
+      "概念设计"
+    ],
+    "publishAt": "2026年04月06日 19:30",
+    "description": "",
+    "totalNodes": 54,
+    "totalEdges": 94,
+    "typeCounts": {
+      "image": 39,
+      "video": 15
+    },
+    "actionCounts": {
+      "image_generate": 39,
+      "video_generate": 15
+    },
+    "storyboardGroups": 0,
+    "scriptRows": 0,
+    "imageModels": [
+      "mj-v7",
+      "nebula-2-flash",
+      "nebula-ultra",
+      "seedream-5"
+    ],
+    "imageModeTypes": [
+      "image2image",
+      "text2image"
+    ],
+    "refImageLinks": 56,
+    "clipCount": 15,
+    "avgClipDurationSec": 5.84,
+    "finalDurationSec": null,
+    "topEdgePairs": [
+      [
+        "image->image",
+        56
+      ],
+      [
+        "image->video",
+        38
+      ]
+    ]
+  },
+  {
+    "templateUuid": "2dcd3fdfcbd44abbb0a5a7519fffc2fd",
+    "title": "聊斋·她宇宙",
+    "likeCount": 5,
+    "tags": [
+      "AI影像狂飙季",
+      "创意单元",
+      "人文科普"
+    ],
+    "publishAt": "2026年04月05日 19:24",
+    "description": "重读《聊斋》，我发现了不为人熟知的精彩女性故事，希望用AI让大家看到这独立女性群像",
+    "totalNodes": 34,
+    "totalEdges": 35,
+    "typeCounts": {
+      "video": 17,
+      "image": 15,
+      "audio": 1,
+      "script": 1
+    },
+    "actionCounts": {
+      "video_generate": 17,
+      "image_generate": 7,
+      "image_resource": 8,
+      "audio_generate": 1,
+      "script_generate": 1
+    },
+    "storyboardGroups": 0,
+    "scriptRows": 9,
+    "imageModels": [
+      "nebula-ultra",
+      "seedream-4.5",
+      "seedream-5"
+    ],
+    "imageModeTypes": [
+      "image2image",
+      "text2image"
+    ],
+    "refImageLinks": 9,
+    "clipCount": 17,
+    "avgClipDurationSec": 6.41,
+    "finalDurationSec": null,
+    "topEdgePairs": [
+      [
+        "image->video",
+        23
+      ],
+      [
+        "image->image",
+        9
+      ],
+      [
+        "video->video",
+        2
+      ],
+      [
+        "video->?",
+        1
+      ]
+    ]
+  }
+]

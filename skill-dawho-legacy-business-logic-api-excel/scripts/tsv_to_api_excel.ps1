@@ -8,7 +8,9 @@
 
     [string]$SheetName = "API_Detail",
 
-    [string]$StyleSpecPath = ""
+    [string]$StyleSpecPath = "",
+
+    [switch]$SkipRegressionCheck
 )
 
 Set-StrictMode -Version Latest
@@ -49,8 +51,8 @@ function Get-ApiBaseName {
 
 function Get-DefaultOutputDir {
     $skillRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
-    $codexHome = [System.IO.Path]::GetFullPath((Join-Path $skillRoot "..\.."))
-    $dir = Join-Path $codexHome "skill-outputs"
+    $skillName = Split-Path -Path $skillRoot -Leaf
+    $dir = Join-Path (Join-Path (Get-Location).Path "output") $skillName
     return [System.IO.Path]::GetFullPath($dir)
 }
 
@@ -79,6 +81,64 @@ function Get-TempTsvPathFromOutput {
     $dir = Split-Path -Path $OutputXlsxPath -Parent
     $base = [System.IO.Path]::GetFileNameWithoutExtension($OutputXlsxPath)
     return Join-Path $dir ("{0}_Temp.tsv" -f $base)
+}
+
+function Get-PythonInvocation {
+    $python = Get-Command python -ErrorAction SilentlyContinue
+    if ($null -ne $python) {
+        return ,@($python.Source)
+    }
+
+    $py = Get-Command py -ErrorAction SilentlyContinue
+    if ($null -ne $py) {
+        return ,@($py.Source, "-3")
+    }
+
+    throw "Python interpreter not found. Install Python or rerun with -SkipRegressionCheck."
+}
+
+function Invoke-RegressionCheck {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$WorkbookPath,
+
+        [string]$SheetNameValue = "API_Detail"
+    )
+
+    $skillRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
+    $checkerPath = Join-Path $PSScriptRoot "check_regression_example.py"
+    $examplePath = Join-Path $skillRoot "references\\raw\\Regression_Example.xlsx"
+
+    if (-not (Test-Path $checkerPath)) {
+        throw "Regression checker not found: $checkerPath"
+    }
+    if (-not (Test-Path $examplePath)) {
+        throw "Regression example workbook not found: $examplePath"
+    }
+
+    $pythonInvocation = Get-PythonInvocation
+    $command = $pythonInvocation[0]
+    $args = @()
+    if ($pythonInvocation.Count -gt 1) {
+        $args += $pythonInvocation[1..($pythonInvocation.Count - 1)]
+    }
+    $args += @(
+        $checkerPath,
+        "--xlsx", $WorkbookPath,
+        "--example", $examplePath
+    )
+    if (-not [string]::IsNullOrWhiteSpace($SheetNameValue)) {
+        $args += @("--sheet-name", $SheetNameValue)
+    }
+
+    $output = & $command @args 2>&1
+    $exitCode = $LASTEXITCODE
+    if ($exitCode -ne 0) {
+        $message = $output -join [Environment]::NewLine
+        throw "Regression check failed for $WorkbookPath`n$message"
+    }
+
+    return ,$output
 }
 
 function ConvertFromJsonCompat {
@@ -263,7 +323,7 @@ function Test-IsContinuationLine {
     }
 
     # Strong row-start patterns should not be merged into previous row.
-    if ($trim -match '^(#|API  Name|Request|Response|範例|For中台開發人員|API 內部業務邏輯|涉及BackendAPI|情境說明|正向情境|連接數據庫失敗|查詢成功後,返回的數據為null|未輸入必填請求參數)$') {
+    if ($trim -match '^(#|API  Name|Request|Response|範例|For中台開發人員|API 內部業務邏輯|涉及BackendAPI|情境說明|正向情境|連接數據庫失敗|連接數據庫或下游服務失敗|查詢成功後,返回的數據為null|未輸入必填請求參數)$') {
         return $false
     }
     if ($trim -match '^\d+(?:\.\d+)*:') {
@@ -865,6 +925,13 @@ finally {
 
     if ($removeTempTsv -and -not [string]::IsNullOrWhiteSpace($tempTsvPath) -and (Test-Path $tempTsvPath)) {
         Remove-Item -Path $tempTsvPath -Force -ErrorAction SilentlyContinue
+    }
+}
+
+if (-not $SkipRegressionCheck) {
+    $regressionOutput = Invoke-RegressionCheck -WorkbookPath $OutputXlsx -SheetNameValue $SheetName
+    foreach ($line in $regressionOutput) {
+        Write-Output $line
     }
 }
 

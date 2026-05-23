@@ -1,0 +1,3 @@
+display_name: 企业微信异动记录写入
+short_description: 将 Common/API 异动清单写入企业微信智能表格 WebHook。
+default_prompt: 读取异动清单 Excel，按既有格式生成记录并写入企业微信智能表格。
